@@ -129,7 +129,7 @@ namespace Deneme.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Şifre veya Email Yanlış! Lütfen Tekrar Deneyiniz");
                     return Page();
                 }
             }

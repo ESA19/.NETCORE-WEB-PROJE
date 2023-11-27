@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EcALM/PSRRpk/RX8hcJjNugSTtUZVHK2+GnJlcmG6/0krBgFAMzqsZEubGuhU6dYXA/VyMJjjUrkCnZgMET5LA==",
+  "dgSpecHash": "k7Rgv9gydlvFAlO7tXEX4RIWBi7u6xb1MBgOCTsn2gM7SxxE62l4QChXk+79ANgVUoFmh5zNgHAVXCbFBNM0Lw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\esaay\\Desktop\\Web Programlama Proje\\Deneme\\Deneme\\Deneme.csproj",
+  "projectFilePath": "C:\\Users\\esaay\\Desktop\\Web Programlama Proje\\Deneme\\.NETCORE-WEB-PROJE\\Deneme\\Deneme.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\esaay\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\esaay\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
