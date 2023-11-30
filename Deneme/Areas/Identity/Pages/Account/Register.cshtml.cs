@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Deneme.Constants;
 
 namespace Deneme.Areas.Identity.Pages.Account
 {
@@ -71,16 +72,13 @@ namespace Deneme.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "First Name")]
-            public string FirstName { get; set; }
+
 
 
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Last Name")]
-            public string LastName { get; set; }
+            [Display(Name = "Ad-Soyad")]
+            public string FirstAndLastName { get; set; }
 
             [Required]
             [Phone]
@@ -112,7 +110,7 @@ namespace Deneme.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "Girilen Şifreyi Onaylayın")]
             [Compare("Password", ErrorMessage = "Şifreler eşleşmiyor!")]
             public string ConfirmPassword { get; set; }
         }
@@ -131,16 +129,16 @@ namespace Deneme.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-                user.FirstName = Input.FirstName; 
-                user.LastName=Input.LastName;
+                user.FirstAndLastName = Input.FirstAndLastName;
                 user.PhoneNumber = Input.Phone;
 
-                await _userStore.SetUserNameAsync(user, Input.FirstName, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, Roles.User.ToString());
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);

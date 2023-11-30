@@ -41,11 +41,7 @@ namespace Deneme.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("LastName")
+                    b.Property<string>("FirstAndLastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 

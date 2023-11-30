@@ -1,56 +1,49 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Kayıt Ol";
     Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
 }
 
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Yeni Bir Hesap Oluşturun</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-floating mb-3">
-                        <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" aria-required="true" />
-                        <label asp-for="Input.FirstName">Ad</label>
-                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-                    </div>
-           
-                </div>
-                <div class="col-6">
-                    <div class=" form-floating mb-3">
-                        <input asp-for="Input.LastName" class="form-control" autocomplete="lastname" aria-required="true"/>
-                        <label asp-for="Input.LastName">Soyad</label>
-                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
-                    </div>
-            
-                </div>
-            </div>
+<form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+    <h2>Yeni Bir Hesap Oluşturun</h2>
+    <hr />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.Phone" class="form-control" autocomplete="phone" aria-required="true" />
-                <label asp-for="Input.Phone">Telefon</label>
-                <span asp-validation-for="Input.Phone" class="text-danger"></span>
-             </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="email" aria-required="true"  />
-                <label asp-for="Input.Email">Email</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                <input asp-for="Input.FirstAndLastName" class="form-control" aria-required="true" />
+                <label asp-for="Input.FirstAndLastName">Ad-Soyad</label>
+                <span asp-validation-for="Input.FirstAndLastName" class="text-danger"></span>
             </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true"  />
-                <label asp-for="Input.Password">Şifre</label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true"  />
-                <label asp-for="Input.ConfirmPassword">Şifre Tekrar</label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Kayıt Oluştur</button>
-        </form>
-    
-   
+
+        </div>
+
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Phone" class="form-control" autocomplete="phone" aria-required="true" />
+        <label asp-for="Input.Phone">Telefon</label>
+        <span asp-validation-for="Input.Phone" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Email" class="form-control" autocomplete="email" aria-required="true" />
+        <label asp-for="Input.Email">Email</label>
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+        <label asp-for="Input.Password">Şifre</label>
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+        <label asp-for="Input.ConfirmPassword">Şifre Tekrar</label>
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+    </div>
+    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Kayıt Oluştur</button>
+</form>
+
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
