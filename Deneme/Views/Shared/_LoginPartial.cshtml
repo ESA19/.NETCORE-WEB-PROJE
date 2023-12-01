@@ -35,6 +35,11 @@
                 <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>
         </li>
+        <li class"nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Randevu/RandevuForm">
+                <button type="submit" class="nav-link btn btn-link btn-primary text-white">Randevu Al</button>
+            </form>
+        </li>
     }
     @if (!SignInManager.IsSignedIn(User))
     {

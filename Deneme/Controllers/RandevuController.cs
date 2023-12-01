@@ -4,7 +4,9 @@ namespace Deneme.Controllers
 {
     public class RandevuController : Controller
     {
-        public IActionResult Index()
+       
+
+        public IActionResult RandevuFormu()
         {
             return View();
         }
