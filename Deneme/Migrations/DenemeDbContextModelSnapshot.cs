@@ -91,77 +91,73 @@ namespace Deneme.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Deneme.Models.Department", b =>
+            modelBuilder.Entity("Deneme.Models.Appointment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AppointmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppointmentId"), 1L, 1);
+
+                    b.Property<DateTime>("AppointmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PatientName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AppointmentId");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("DoctorId");
+
+                    b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("Deneme.Models.Department", b =>
+                {
+                    b.Property<int>("DepartmentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DepartmentId"), 1L, 1);
 
                     b.Property<string>("DepartmentName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("DepartmentId");
 
-                    b.ToTable("departments");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("Deneme.Models.Doctor", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DoctorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DoctorId"), 1L, 1);
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DoctorName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("departmentId")
-                        .HasColumnType("int");
+                    b.HasKey("DoctorId");
 
-                    b.HasKey("Id");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("departmentId");
-
-                    b.ToTable("doctors");
-                });
-
-            modelBuilder.Entity("Deneme.Models.RandevuForm", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserNameId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("appointmentdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("departmentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("doctorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserNameId");
-
-                    b.HasIndex("departmentId");
-
-                    b.HasIndex("doctorId");
-
-                    b.ToTable("randevusforms");
+                    b.ToTable("Doctors");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -301,40 +297,34 @@ namespace Deneme.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Deneme.Models.Doctor", b =>
+            modelBuilder.Entity("Deneme.Models.Appointment", b =>
                 {
-                    b.HasOne("Deneme.Models.Department", "department")
-                        .WithMany("doctors")
-                        .HasForeignKey("departmentId")
+                    b.HasOne("Deneme.Models.Department", "Department")
+                        .WithMany("Appointments")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Deneme.Models.Doctor", "Doctor")
+                        .WithMany("Appointments")
+                        .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("department");
+                    b.Navigation("Department");
+
+                    b.Navigation("Doctor");
                 });
 
-            modelBuilder.Entity("Deneme.Models.RandevuForm", b =>
+            modelBuilder.Entity("Deneme.Models.Doctor", b =>
                 {
-                    b.HasOne("Deneme.Areas.Identity.Data.ApplicationUser", "UserName")
-                        .WithMany()
-                        .HasForeignKey("UserNameId");
-
-                    b.HasOne("Deneme.Models.Department", "department")
-                        .WithMany()
-                        .HasForeignKey("departmentId")
+                    b.HasOne("Deneme.Models.Department", "Department")
+                        .WithMany("Doctors")
+                        .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Deneme.Models.Doctor", "doctor")
-                        .WithMany("randevular")
-                        .HasForeignKey("doctorId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("UserName");
-
-                    b.Navigation("department");
-
-                    b.Navigation("doctor");
+                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -390,12 +380,14 @@ namespace Deneme.Migrations
 
             modelBuilder.Entity("Deneme.Models.Department", b =>
                 {
-                    b.Navigation("doctors");
+                    b.Navigation("Appointments");
+
+                    b.Navigation("Doctors");
                 });
 
             modelBuilder.Entity("Deneme.Models.Doctor", b =>
                 {
-                    b.Navigation("randevular");
+                    b.Navigation("Appointments");
                 });
 #pragma warning restore 612, 618
         }

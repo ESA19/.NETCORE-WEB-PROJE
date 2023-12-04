@@ -18,26 +18,53 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial.cshtml" />
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+                <div class="navbar-collapse collapse d-sm-block inline-flex justify-content-between">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item" >
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Create">Randevu Al</a>
+                            </li>
+                        </ul>
+                       
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item" >
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Department" asp-action="Create">Departman Ekle </a>
+                            </li>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - ESA Hospitals
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+                        </ul>
+
+                        <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="Create">Doktor Ekle</a>
+                        </li>
+                        </ul>
+
+                        }
+                        </div>
+                        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial.cshtml" />
+                        </div>
+                        </div>
+                        </nav>
+                        </header>
+                        <div class="container">
+                        <main role="main" class="pb-3">
+                        @RenderBody()
+                        </main>
+                        </div>
+
+                        <footer class="border-top footer text-muted">
+                        <div class="container">
+                        &copy; 2023 - ESA Hospitals
+                        </div>
+                        </footer>
+                        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                        <script src="~/js/site.js" asp-append-version="true"></script>
+                        @await RenderSectionAsync("Scripts", required: false)
+                        </body>
+                        </html>

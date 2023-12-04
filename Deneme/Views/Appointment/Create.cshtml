@@ -1,0 +1,80 @@
+﻿@using Deneme.Areas.Identity.Data;
+@using Deneme.Data;
+@using Microsoft.AspNetCore.Identity;
+@model Deneme.Models.Appointment
+@inject DenemeDbContext k
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+     var sorgu = k.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+        string user_name = sorgu.FirstAndLastName;
+}
+
+<h1>Create</h1>
+
+<h4>Appointment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PatientName" class="control-label"></label>
+                <input asp-for="PatientName" class="form-control" value="@user_name" readonly  />
+                <span asp-validation-for="PatientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <select asp-for="DepartmentId" class ="form-control" asp-items="ViewBag.DepartmentName">
+                    <option>---Lütfen Departman Seçin---</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoctorId" class="control-label"></label>
+                <select asp-for="DoctorId" class="form-control" asp-items="ViewBag.DoctorName">
+                    <option value="-1">---Lütfen Doktor Seçin---</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AppointmentDate" class="control-label"></label>
+                <input asp-for="AppointmentDate" class="form-control" />
+                <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+       $(function(){
+           $('#Department').change(function(){
+               var id=$('#Department').val();
+               $.ajax({
+                   url:'/Appointment/GetDoctors',
+                   data:{p:id},
+                   type:"POST",
+                   dataType:"Json",
+                   success:function(data){
+                       console.log(data);
+                    $('#Doctor').empty();
+                    for(var i=0;i<data.length;i++){
+                        $('#Doctor').append("<option value='"+data[i].Value+"'>"+data[i].Text+"</Option>");
+                    }
+                   }
+               });
+            });
+       });
+
+
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

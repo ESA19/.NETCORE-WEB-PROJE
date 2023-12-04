@@ -1026,3 +1026,10 @@ C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\obj\Debug\net6.0\refint\De
 C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\obj\Debug\net6.0\Deneme.pdb
 C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\obj\Debug\net6.0\Deneme.genruntimeconfig.cache
 C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\obj\Debug\net6.0\ref\Deneme.dll
+C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\esaay\Source\Repos\.NETCORE-WEB-PROJE\Deneme\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

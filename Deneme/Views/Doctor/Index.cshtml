@@ -1,15 +1,16 @@
 ﻿@model IEnumerable<Deneme.Models.Doctor>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Doktorlar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h3>Doktorlar</h3>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<hr />
+<div>
+   <a asp-action="Create" class="btn btn-primary">Yeni Doktor Ekle</a>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +18,7 @@
                 @Html.DisplayNameFor(model => model.DoctorName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.department)
+                @Html.DisplayNameFor(model => model.Department)
             </th>
             <th></th>
         </tr>
@@ -29,12 +30,11 @@
                 @Html.DisplayFor(modelItem => item.DoctorName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.department.Id)
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit"  class="btn btn-warning btn-md "asp-route-id="@item.DoctorId">Düzenle</a> |
+                <a asp-action="Delete" class="btn btn-danger btn-md" asp-route-id="@item.DoctorId">Sil</a>
             </td>
         </tr>
 }

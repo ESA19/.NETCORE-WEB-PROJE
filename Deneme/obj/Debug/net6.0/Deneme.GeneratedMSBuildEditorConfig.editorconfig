@@ -136,8 +136,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Admin/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Appointment/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Appointment/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Appointment/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Appointment/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Appointment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Department/Create.cshtml]
@@ -146,14 +162,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Department/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Department/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Department/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Department/Index.cshtml]
@@ -166,10 +174,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Doctor/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Doctor/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Doctor/Edit.cshtml]
@@ -186,26 +190,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/RandevuForm/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dUZvcm1cQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/RandevuForm/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dUZvcm1cRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/RandevuForm/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dUZvcm1cRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/RandevuForm/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dUZvcm1cRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/RandevuForm/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dUZvcm1cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/esaay/Source/Repos/.NETCORE-WEB-PROJE/Deneme/Views/Shared/Error.cshtml]

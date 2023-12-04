@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Deneme.Data;
 using Deneme.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Deneme.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class DepartmentController : Controller
     {
         private readonly DenemeDbContext _context;
@@ -22,21 +24,21 @@ namespace Deneme.Controllers
         // GET: Department
         public async Task<IActionResult> Index()
         {
-              return _context.departments != null ? 
-                          View(await _context.departments.ToListAsync()) :
-                          Problem("Entity set 'DenemeDbContext.departments'  is null.");
+              return _context.Departments != null ? 
+                          View(await _context.Departments.ToListAsync()) :
+                          Problem("Entity set 'DenemeDbContext.Departments'  is null.");
         }
 
         // GET: Department/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.departments == null)
+            if (id == null || _context.Departments == null)
             {
                 return NotFound();
             }
 
-            var department = await _context.departments
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var department = await _context.Departments
+                .FirstOrDefaultAsync(m => m.DepartmentId == id);
             if (department == null)
             {
                 return NotFound();
@@ -56,9 +58,9 @@ namespace Deneme.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DepartmentName")] Department department)
+        public async Task<IActionResult> Create([Bind("DepartmentId,DepartmentName")] Department department)
         {
-            if (ModelState.IsValid || true)
+            if (ModelState.IsValid)
             {
                 _context.Add(department);
                 await _context.SaveChangesAsync();
@@ -70,12 +72,12 @@ namespace Deneme.Controllers
         // GET: Department/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.departments == null)
+            if (id == null || _context.Departments == null)
             {
                 return NotFound();
             }
 
-            var department = await _context.departments.FindAsync(id);
+            var department = await _context.Departments.FindAsync(id);
             if (department == null)
             {
                 return NotFound();
@@ -88,14 +90,14 @@ namespace Deneme.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DepartmentName")] Department department)
+        public async Task<IActionResult> Edit(int id, [Bind("DepartmentId,DepartmentName")] Department department)
         {
-            if (id != department.Id)
+            if (id != department.DepartmentId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid || true)
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -104,7 +106,7 @@ namespace Deneme.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DepartmentExists(department.Id))
+                    if (!DepartmentExists(department.DepartmentId))
                     {
                         return NotFound();
                     }
@@ -121,13 +123,13 @@ namespace Deneme.Controllers
         // GET: Department/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.departments == null)
+            if (id == null || _context.Departments == null)
             {
                 return NotFound();
             }
 
-            var department = await _context.departments
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var department = await _context.Departments
+                .FirstOrDefaultAsync(m => m.DepartmentId == id);
             if (department == null)
             {
                 return NotFound();
@@ -141,14 +143,14 @@ namespace Deneme.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.departments == null)
+            if (_context.Departments == null)
             {
-                return Problem("Entity set 'DenemeDbContext.departments'  is null.");
+                return Problem("Entity set 'DenemeDbContext.Departments'  is null.");
             }
-            var department = await _context.departments.FindAsync(id);
+            var department = await _context.Departments.FindAsync(id);
             if (department != null)
             {
-                _context.departments.Remove(department);
+                _context.Departments.Remove(department);
             }
             
             await _context.SaveChangesAsync();
@@ -157,7 +159,7 @@ namespace Deneme.Controllers
 
         private bool DepartmentExists(int id)
         {
-          return (_context.departments?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Departments?.Any(e => e.DepartmentId == id)).GetValueOrDefault();
         }
     }
 }

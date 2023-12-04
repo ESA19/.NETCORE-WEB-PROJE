@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Deneme.Data;
 using Deneme.Models;
+using System.Numerics;
+using Deneme.Constants;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Deneme.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DoctorController : Controller
     {
         private readonly DenemeDbContext _context;
@@ -22,21 +26,21 @@ namespace Deneme.Controllers
         // GET: Doctor
         public async Task<IActionResult> Index()
         {
-            var denemeDbContext = _context.doctors.Include(d => d.department);
+            var denemeDbContext = _context.Doctors.Include(d => d.Department);
             return View(await denemeDbContext.ToListAsync());
         }
 
         // GET: Doctor/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.doctors == null)
+            if (id == null || _context.Doctors == null)
             {
                 return NotFound();
             }
 
-            var doctor = await _context.doctors
-                .Include(d => d.department)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var doctor = await _context.Doctors
+                .Include(d => d.Department)
+                .FirstOrDefaultAsync(m => m.DoctorId == id);
             if (doctor == null)
             {
                 return NotFound();
@@ -48,7 +52,9 @@ namespace Deneme.Controllers
         // GET: Doctor/Create
         public IActionResult Create()
         {
-            ViewData["departmentId"] = new SelectList(_context.departments, "Id", "Id");
+            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentId");
+            ViewBag.DepartmentName = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
+           
             return View();
         }
 
@@ -57,32 +63,37 @@ namespace Deneme.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DoctorName,departmentId")] Doctor doctor)
+        public async Task<IActionResult> Create([Bind("DoctorId,DoctorName,DepartmentId")] Doctor doctor)
         {
-            if (ModelState.IsValid || true)
+          
+
+            if (ModelState.IsValid||true)
             {
                 _context.Add(doctor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["departmentId"] = new SelectList(_context.departments, "Id", "Id", doctor.departmentId);
+           
+            ViewData["DepartmanId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentId", doctor.DepartmentId);
             return View(doctor);
+           
         }
 
         // GET: Doctor/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.doctors == null)
+            if (id == null || _context.Doctors == null)
             {
                 return NotFound();
             }
 
-            var doctor = await _context.doctors.FindAsync(id);
+            var doctor = await _context.Doctors.FindAsync(id);
             if (doctor == null)
             {
                 return NotFound();
             }
-            ViewData["departmentId"] = new SelectList(_context.departments, "Id", "Id", doctor.departmentId);
+            ViewBag.DepartmentName = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
+            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentId", doctor.DepartmentId);
             return View(doctor);
         }
 
@@ -91,14 +102,14 @@ namespace Deneme.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DoctorName,departmentId")] Doctor doctor)
+        public async Task<IActionResult> Edit(int id, [Bind("DoctorId,DoctorName,DepartmentId")] Doctor doctor)
         {
-            if (id != doctor.Id)
+            if (id != doctor.DoctorId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid || true)
+            if (ModelState.IsValid||true)
             {
                 try
                 {
@@ -107,7 +118,7 @@ namespace Deneme.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DoctorExists(doctor.Id))
+                    if (!DoctorExists(doctor.DoctorId))
                     {
                         return NotFound();
                     }
@@ -118,21 +129,21 @@ namespace Deneme.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["departmentId"] = new SelectList(_context.departments, "Id", "Id", doctor.departmentId);
+            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentId", doctor.DepartmentId);
             return View(doctor);
         }
 
         // GET: Doctor/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.doctors == null)
+            if (id == null || _context.Doctors == null)
             {
                 return NotFound();
             }
 
-            var doctor = await _context.doctors
-                .Include(d => d.department)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var doctor = await _context.Doctors
+                .Include(d => d.Department)
+                .FirstOrDefaultAsync(m => m.DoctorId == id);
             if (doctor == null)
             {
                 return NotFound();
@@ -146,14 +157,14 @@ namespace Deneme.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.doctors == null)
+            if (_context.Doctors == null)
             {
-                return Problem("Entity set 'DenemeDbContext.doctors'  is null.");
+                return Problem("Entity set 'DenemeDbContext.Doctors'  is null.");
             }
-            var doctor = await _context.doctors.FindAsync(id);
+            var doctor = await _context.Doctors.FindAsync(id);
             if (doctor != null)
             {
-                _context.doctors.Remove(doctor);
+                _context.Doctors.Remove(doctor);
             }
             
             await _context.SaveChangesAsync();
@@ -162,7 +173,7 @@ namespace Deneme.Controllers
 
         private bool DoctorExists(int id)
         {
-          return (_context.doctors?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Doctors?.Any(e => e.DoctorId == id)).GetValueOrDefault();
         }
     }
 }
