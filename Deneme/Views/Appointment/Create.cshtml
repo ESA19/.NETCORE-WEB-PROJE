@@ -27,14 +27,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="DepartmentId" class="control-label"></label>
-                <select asp-for="DepartmentId" class ="form-control" asp-items="ViewBag.DepartmentName">
-                    <option>---Lütfen Departman Seçin---</option>
+                <select asp-for="DepartmentId" class ="form-control" asp-items="ViewBag.DepartmentName" id="departmentId">
+                    <option disabled selected >---Lütfen Departman Seçin---</option>
                 </select>
             </div>
             <div class="form-group">
                 <label asp-for="DoctorId" class="control-label"></label>
-                <select asp-for="DoctorId" class="form-control" asp-items="ViewBag.DoctorName">
-                    <option value="-1">---Lütfen Doktor Seçin---</option>
+                <select asp-for="DoctorId" class="form-control" asp-items="ViewBag.DoctorName" id="doctorId" data-text-field="text" data-value-field="value">
+                    
                 </select>
             </div>
             <div class="form-group">
@@ -55,26 +55,33 @@
 
 @section Scripts {
     <script>
-       $(function(){
-           $('#Department').change(function(){
-               var id=$('#Department').val();
-               $.ajax({
-                   url:'/Appointment/GetDoctors',
-                   data:{p:id},
-                   type:"POST",
-                   dataType:"Json",
-                   success:function(data){
-                       console.log(data);
-                    $('#Doctor').empty();
-                    for(var i=0;i<data.length;i++){
-                        $('#Doctor').append("<option value='"+data[i].Value+"'>"+data[i].Text+"</Option>");
+        $(document).ready(function()
+        {
+            doctors();
+        });
+        $("#departmentId").change(function()
+        {
+            doctors();
+        });
+        var doctors=function(){
+            $.ajax({
+                url:'@Url.Action("GetDoctors","Appointment")',
+            type:'GET',
+            data:{
+                departmentId: $('#departmentId').val(),
+
+            },
+            success:function(data){
+                $('#doctorId').find('option').remove()
+                $(data).each(
+                    function(index,item){
+                       
+                        $('#doctorId').append('<option value="'+item.doctorId+'">'+item.doctorName+'</option>')
                     }
-                   }
-               });
-            });
-       });
-
-
+                );
+            }
+            })
+        }
     </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

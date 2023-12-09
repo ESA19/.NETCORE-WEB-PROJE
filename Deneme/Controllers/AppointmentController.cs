@@ -179,13 +179,9 @@ namespace Deneme.Controllers
             return (_context.Appointments?.Any(e => e.AppointmentId == id)).GetValueOrDefault();
         }
 
-        public JsonResult GetDoctors(int  p)
+        public JsonResult GetDoctors(int departmentId)
         {
-            var doctors=(from x in _context.Doctors join y in _context.Departments on x.DepartmentId equals y.DepartmentId where x.DepartmentId==p select new
-            {
-                Text=x.DoctorName, Value=x.DoctorId.ToString()
-            }).ToList();
-            return Json(doctors, System.Web.Mvc.JsonRequestBehavior.AllowGet);
+            return Json(_context.Doctors.Where(u => u.DepartmentId == departmentId).ToList());
         }
 
     }
