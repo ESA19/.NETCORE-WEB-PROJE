@@ -108,15 +108,17 @@ namespace Deneme.Migrations
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PatientName")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("AppointmentId");
 
                     b.HasIndex("DepartmentId");
 
                     b.HasIndex("DoctorId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Appointments");
                 });
@@ -311,9 +313,17 @@ namespace Deneme.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Deneme.Areas.Identity.Data.ApplicationUser", "User")
+                        .WithMany("Appointments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Department");
 
                     b.Navigation("Doctor");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Deneme.Models.Doctor", b =>
@@ -376,6 +386,11 @@ namespace Deneme.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Deneme.Areas.Identity.Data.ApplicationUser", b =>
+                {
+                    b.Navigation("Appointments");
                 });
 
             modelBuilder.Entity("Deneme.Models.Department", b =>

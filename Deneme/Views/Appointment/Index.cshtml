@@ -1,68 +1,55 @@
-﻿@using Deneme.Areas.Identity.Data;
-@using Deneme.Data;
-@using Microsoft.AspNetCore.Identity;
-@using Microsoft.AspNetCore.Http;
-@model IEnumerable<Deneme.Models.Appointment>
-@inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
-@inject DenemeDbContext k
+﻿@model IEnumerable<Deneme.Models.Appointment>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Randevularım";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-
-    
-
-        <h1>Index</h1>
-
-        <p>
-            <a asp-action="Create">Create New</a>
-        </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PatientName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Doctor)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Department)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AppointmentDate)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PatientName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Doctor.DoctorId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Department.DepartmentId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AppointmentDate)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.AppointmentId">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.AppointmentId">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.AppointmentId">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    
-
-
+<h3>Randevularım</h3>
+<hr />
+<p>
+    <a asp-action="Create">Yeni Randevu Al</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.FirstAndLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doctor.DoctorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstAndLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.DoctorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AppointmentId">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.AppointmentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AppointmentId">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

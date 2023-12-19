@@ -100,7 +100,7 @@ namespace Deneme.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "Şifre minimum 6 maksimum 12 karakter olmalı!", MinimumLength = 6)]
+            [StringLength(12, ErrorMessage = "Şifre minimum 6 maksimum 12 karakter olmalı!", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }

@@ -73,7 +73,12 @@ namespace Deneme.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-           
+            foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                // Hata mesajını uygun bir şekilde işleyin (örneğin, loglama veya kullanıcıya gösterme)
+                Console.WriteLine($"Hata: {error.ErrorMessage}");
+            }
+
             ViewData["DepartmanId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentId", doctor.DepartmentId);
             return View(doctor);
            

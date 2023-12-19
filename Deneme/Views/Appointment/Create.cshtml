@@ -3,85 +3,87 @@
 @using Microsoft.AspNetCore.Identity;
 @model Deneme.Models.Appointment
 @inject DenemeDbContext k
-@inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
-     var sorgu = k.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
-        string user_name = sorgu.FirstAndLastName;
+    var sorgu = k.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+    string user_id = sorgu.Id;
+    string user_Name = sorgu.FirstAndLastName;
 }
 
-<h1>Create</h1>
+<p>@ViewBag.Mesaj</p>
 
-<h4>Appointment</h4>
+<h3>Randevu Al</h3>
+
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PatientName" class="control-label"></label>
-                <input asp-for="PatientName" class="form-control" value="@user_name" readonly  />
-                <span asp-validation-for="PatientName" class="text-danger"></span>
+            <div class="form-group mb-3">
+                <label asp-for="UserId" class="control-label"></label>
+                <input class="form-control" asp-for="UserId" value="@user_id" hidden readonly></input>
+                <input  class ="form-control" value="@user_Name" readonly ></input>
+                
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="DepartmentId" class="control-label"></label>
-                <select asp-for="DepartmentId" class ="form-control" asp-items="ViewBag.DepartmentName" id="departmentId">
-                    <option disabled selected >---Lütfen Departman Seçin---</option>
+                <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentName" id="departmentId">
+                    <option disabled selected>---Lütfen Departman Seçin---</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="DoctorId" class="control-label"></label>
                 <select asp-for="DoctorId" class="form-control" asp-items="ViewBag.DoctorName" id="doctorId" data-text-field="text" data-value-field="value">
-                    
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="AppointmentDate" class="control-label"></label>
-                <input asp-for="AppointmentDate" class="form-control" />
+                <input asp-for="AppointmentDate" class="form-control" id="AppointmentDate"/>
                 <span asp-validation-for="AppointmentDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group mb-3">
+                <input type="submit" value="Randevu Oluştur" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Randeularım'a Geri Dön</a>
 </div>
 
 @section Scripts {
     <script>
-        $(document).ready(function()
-        {
+        $(document).ready(function () {
             doctors();
         });
-        $("#departmentId").change(function()
-        {
+        $("#departmentId").change(function () {
             doctors();
         });
-        var doctors=function(){
+        var doctors = function () {
             $.ajax({
-                url:'@Url.Action("GetDoctors","Appointment")',
-            type:'GET',
-            data:{
-                departmentId: $('#departmentId').val(),
+                url: '@Url.Action("GetDoctors","Appointment")',
+                type: 'GET',
+                data: {
+                    departmentId: $('#departmentId').val(),
 
-            },
-            success:function(data){
-                $('#doctorId').find('option').remove()
-                $(data).each(
-                    function(index,item){
-                       
-                        $('#doctorId').append('<option value="'+item.doctorId+'">'+item.doctorName+'</option>')
-                    }
-                );
-            }
+                },
+                success: function (data) {
+                    $('#doctorId').find('option').remove()
+                    $(data).each(
+                        function (index, item) {
+
+                            $('#doctorId').append('<option value="' + item.doctorId + '">' + item.doctorName + '</option>')
+                        }
+                    );
+                }
             })
-        }
+        };
+        
+        
     </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

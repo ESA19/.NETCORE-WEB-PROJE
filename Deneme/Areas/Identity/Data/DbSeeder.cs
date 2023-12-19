@@ -23,7 +23,7 @@ namespace Deneme.Areas.Identity.Data
             var userInDb = await userManager.FindByEmailAsync(user.Email);
             if (userInDb == null) 
             {
-                await userManager.CreateAsync(user, "Sau.123");
+                await userManager.CreateAsync(user, "sau");
                 await userManager.AddToRoleAsync(user, Roles.Admin.ToString());
             }
             

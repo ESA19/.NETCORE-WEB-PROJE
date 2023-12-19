@@ -1,4 +1,5 @@
 ﻿using Deneme.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,16 +10,21 @@ namespace Deneme.Models
     {
         
         public int AppointmentId { get; set; }
-        [Display(Name ="Hasta Adı")]
-        public string PatientName { get; set;}
-       
 
+        [Display(Name = "Hasta Adı")]
+        public string UserId { get; set;}
+
+        [ForeignKey("UserId")]
+
+        public ApplicationUser User { get; set; }
+
+        [Display(Name = "Doktorun Adı")]
         public int DoctorId { get; set; }
-        [Display(Name ="Doktorun Adı")]
+        
         public Doctor Doctor { get; set; }
-
+        [Display(Name = "Departman Adı")]
         public int DepartmentId { get; set; }
-        [Display(Name ="Departman Adı")]
+        
         public Department Department { get; set; }
 
         [Display(Name = "Randevu Tarihi")]

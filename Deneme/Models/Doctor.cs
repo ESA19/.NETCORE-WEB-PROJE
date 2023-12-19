@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Deneme.Models
 {
@@ -11,6 +12,7 @@ namespace Deneme.Models
         
         
         public int DepartmentId { get; set; }
+        
         [Display(Name = "Doktorun Bölümü")]
         public Department Department { get; set; }
 

@@ -63,7 +63,7 @@ namespace Deneme.Areas.Identity.Pages.Account.Manage
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "Şifre minimum 6 karakter uzunluğunda olmalı!", MinimumLength = 6)]
+            [StringLength(10, ErrorMessage = "Şifre minimum 6 karakter uzunluğunda olmalı!", MinimumLength = 3)]
             [DataType(DataType.Password)]
             [Display(Name = "Yeni Şifre")]
             public string NewPassword { get; set; }

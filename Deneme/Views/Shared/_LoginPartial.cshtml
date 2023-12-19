@@ -6,13 +6,7 @@
 @inject UserManager<ApplicationUser> UserManager
 @inject DenemeDbContext k
 
-@{
-    
-    {
-        
-    }
 
-}
 <ul class="navbar-nav">
 
 
@@ -34,10 +28,20 @@
     }
     @if (!SignInManager.IsSignedIn(User))
     {
+
+
+        
+
+
+      
+
         <li class"nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Create","Appointment",new{area=""})">
-                <button type="submit" class="nav-link btn btn-link btn-primary text-white">Randevu Al</button>
+
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Login">
+                    <button type="submit" class="nav-link btn btn-link btn-primary text-white">Giriş Yap</button>
             </form>
+               
+         
         </li>
     }
 

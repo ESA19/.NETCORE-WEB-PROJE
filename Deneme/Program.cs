@@ -9,8 +9,16 @@ var connectionString = builder.Configuration.GetConnectionString("DenemeDbContex
 builder.Services.AddDbContext<DenemeDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false).AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<DenemeDbContext>();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 3;
+})
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<DenemeDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
