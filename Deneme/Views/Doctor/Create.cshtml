@@ -6,11 +6,7 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
     ;
-
-
 }
-
-
 
 <h4>Doktor Ekle</h4>
 <hr />
@@ -24,11 +20,11 @@
                 <span asp-validation-for="DoctorName" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="Department" class="control-label"></label>
-                <select asp-for="DepartmentId"class="form-control" asp-items="ViewBag.DepartmentName"></select>
+                <label asp-for="DepartmentId" class="control-label"></label> <!-- Bu satırı düzenledim -->
+                <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentName"></select>
             </div>
             <div class="form-group mb-3">
-                <input type="submit" value="Ekle" class="btn btn-primary" />
+                <input type="submit" value="Ekle" class="btn btn-success" />
             </div>
         </form>
     </div>
@@ -39,5 +35,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

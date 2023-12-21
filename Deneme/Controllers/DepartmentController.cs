@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Deneme.Data;
 using Deneme.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Deneme.Controllers
 {
@@ -24,9 +26,12 @@ namespace Deneme.Controllers
         // GET: Department
         public async Task<IActionResult> Index()
         {
-              return _context.Departments != null ? 
-                          View(await _context.Departments.ToListAsync()) :
-                          Problem("Entity set 'DenemeDbContext.Departments'  is null.");
+             List<Department> departments =new List<Department>();
+            HttpClient client = new HttpClient();
+            var response =await client.GetAsync("https://localhost:7149/api/DepartmentApi");
+            var jsonResponse=await response.Content.ReadAsStringAsync();
+            departments=JsonConvert.DeserializeObject<List<Department>>(jsonResponse);
+            return View(departments);
         }
 
         // GET: Department/Details/5

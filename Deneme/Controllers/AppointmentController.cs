@@ -9,6 +9,7 @@ using Deneme.Data;
 using Deneme.Models;
 using Deneme.Areas.Identity.Data;
 using System.Security.Claims;
+using Newtonsoft.Json;
 
 namespace Deneme.Controllers
 {
@@ -29,10 +30,12 @@ namespace Deneme.Controllers
         // GET: Appointment
         public async Task<IActionResult> Index()
         {
-            var UserId=User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var denemeDbContext = _context.Appointments.Include(a => a.Department).Include(a => a.Doctor).Include(a=> a.User).Where(a=>a.User.Id==UserId);
+            var UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var denemeDbContext = _context.Appointments.Include(a => a.Department).Include(a => a.Doctor).Include(a => a.User).Where(a => a.User.Id == UserId);
 
             return View(await denemeDbContext.ToListAsync());
+
+
         }
 
         // GET: Appointment/Details/5
@@ -75,7 +78,7 @@ namespace Deneme.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AppointmentId,UserId,DoctorId,DepartmentId,AppointmentDate")] Appointment appointment)
+        public async Task<IActionResult> Create([Bind("AppointmentId,UserId,DoctorId,DepartmentId,AppointmentDate")] Appointments appointment)
         {
             bool hataVar = false;
             var appointmentDate = _context.Appointments.Where(x => x.AppointmentDate == appointment.AppointmentDate).Count();
@@ -107,7 +110,11 @@ namespace Deneme.Controllers
             //    ViewBag.Mesaj = "ters gitti";
             //    hataVar = true;
             //}
-
+            if (appointment.AppointmentDate.Date < DateTime.Today)
+            {
+                ViewBag.Mesaj = "Geçmiş Zamana Randevu alınmaz!";
+                hataVar = true;
+            }
             if (hataVar)
             {
                 ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentId", appointment.DepartmentId);
@@ -119,7 +126,7 @@ namespace Deneme.Controllers
                 
                 return View(appointment);
             }
-            
+       
 
             _context.Add(appointment);
             await _context.SaveChangesAsync();
@@ -151,7 +158,7 @@ namespace Deneme.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AppointmentId,UserId,DoctorId,DepartmentId,AppointmentDate")] Appointment appointment)
+        public async Task<IActionResult> Edit(int id, [Bind("AppointmentId,UserId,DoctorId,DepartmentId,AppointmentDate")] Appointments appointment)
         {
             if (id != appointment.AppointmentId)
             {

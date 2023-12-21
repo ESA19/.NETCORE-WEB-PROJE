@@ -6,9 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Deneme.Models
 {
-    public class Appointment
+    public class Appointments
     {
-        
+        [Key]
         public int AppointmentId { get; set; }
 
         [Display(Name = "Hasta Adı")]
@@ -26,7 +26,7 @@ namespace Deneme.Models
         public int DepartmentId { get; set; }
         
         public Department Department { get; set; }
-
+        [Required]
         [Display(Name = "Randevu Tarihi")]
         public DateTime AppointmentDate { get; set; }
 

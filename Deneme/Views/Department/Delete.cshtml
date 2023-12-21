@@ -6,7 +6,7 @@
 }
 
 
-<h3>Bu Departmanı Silmek İstediğinize Emin Misiniz?</h3>
+<h3>Bu Departmanı Silmek İstediğinize Emin Misiniz? Bu departmana bağlı oaln tüm doktorlar ve randevular kaldırılacaktır.</h3>
 <hr />
 <div>
     <dl class="row">
@@ -20,7 +20,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="DepartmentId" />
-        <input type="submit" value="Delete" class="btn btn-danger btn-sm" /> |
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Departmanlar Listesine Geri Dön</a>
     </form>
 </div>

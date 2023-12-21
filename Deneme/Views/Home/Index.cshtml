@@ -1,8 +1,258 @@
 ﻿@{
     ViewData["Title"] = "Anasayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">ESA Hospital'a Hoşgeldiniz!</h1>
-   
-</div>
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="/Content/images/favicon.png" type="">
+
+    <title> Orthoc </title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/Content/css/bootstrap.css") />
+
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!--owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- font awesome style -->
+    <link href=@Url.Content("/Content/css/font-awesome.min.css") rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href=@Url.Content("/Content/css/style.css") rel="stylesheet" />
+    <!-- responsive style -->
+    <link href=@Url.Content("/Content/css/responsive.css") rel="stylesheet" />
+
+</head>
+<body>
+    <!-- department section -->
+
+    <section class="department_section layout_padding" id="departments">
+        <div class="department_container">
+            <div class="container ">
+                <div class="heading_container heading_center">
+                    <h2>
+                        Departmanlarımız
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="/Content/images/s1.png" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Kardiyoloji
+                                </h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="/Content/images/s2.png" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Tanı ve Teşhis
+                                </h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="/Content/images/s3.png" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Cerrahi
+                                </h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="/Content/images/s4.png" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    İlk Yardım
+                                </h5>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end department section -->
+    <!-- about section -->
+
+    <section class="about_section layout_margin-bottom" id="about">
+        <div class="container  ">
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="img-box">
+                        <img src="/Content/images/about-img.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h2>
+                                 <span>Hakkımızda</span>
+                            </h2>
+                        </div>
+                        <p>
+                          1995'ten bugüne büyüyen ve gelişen kadromuz ve departmanlarımızla siz hastalarımızın hizmetindeyiz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end about section -->
+    <!-- doctor section -->
+
+    <section class="doctor_section layout_padding" id="doctors">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                   Doktorlarımız
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-4 mx-auto">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="/Content/images/d1.jpg" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <div class="social_box">
+                                <a href="">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <h5>
+                                Fikriye Tutuk
+                            </h5>
+                            <h6 class="">
+                                Doç. Dr.
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mx-auto">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="/Content/images/d2.jpg" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <div class="social_box">
+                                <a href="">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <h5>
+                                Hakkı Takmaz
+                            </h5>
+                            <h6 class="">
+                                Prof. Dr.
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mx-auto">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="/Content/images/d3.jpg" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <div class="social_box">
+                                <a href="">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <h5>
+                                Beyza Temiz
+                            </h5>
+                            <h6 class="">
+                                Dr.
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end doctor section -->
+    <!-- contact section -->
+    <section class="contact_section layout_padding ">
+        <div class="container " >
+            <div class="heading_container">
+                <h2 class="text-center">
+                   Lokasyonumuz 
+                </h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="map_container">
+                        <div class="map">
+                            <div id="googleMap"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end contact section -->
+
+</body>

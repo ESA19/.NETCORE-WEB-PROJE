@@ -7,6 +7,41 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Content\about.html" />
+    <None Include="wwwroot\Content\contact.html" />
+    <None Include="wwwroot\Content\css\bootstrap.css" />
+    <None Include="wwwroot\Content\css\font-awesome.min.css" />
+    <None Include="wwwroot\Content\css\responsive.css" />
+    <None Include="wwwroot\Content\css\style.css" />
+    <None Include="wwwroot\Content\css\style.css.map" />
+    <None Include="wwwroot\Content\css\style.scss" />
+    <None Include="wwwroot\Content\departments.html" />
+    <None Include="wwwroot\Content\doctors.html" />
+    <None Include="wwwroot\Content\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\Content\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\Content\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\Content\images\about-img.jpg" />
+    <None Include="wwwroot\Content\images\client.jpg" />
+    <None Include="wwwroot\Content\images\d1.jpg" />
+    <None Include="wwwroot\Content\images\d2.jpg" />
+    <None Include="wwwroot\Content\images\d3.jpg" />
+    <None Include="wwwroot\Content\images\favicon.png" />
+    <None Include="wwwroot\Content\images\hero-bg.png" />
+    <None Include="wwwroot\Content\images\s1.png" />
+    <None Include="wwwroot\Content\images\s2.png" />
+    <None Include="wwwroot\Content\images\s3.png" />
+    <None Include="wwwroot\Content\images\s4.png" />
+    <None Include="wwwroot\Content\images\t1.jpg" />
+    <None Include="wwwroot\Content\images\t2.jpg" />
+    <None Include="wwwroot\Content\images\t3.jpg" />
+    <None Include="wwwroot\Content\images\t4.jpg" />
+    <None Include="wwwroot\Content\index.html" />
+    <None Include="wwwroot\Content\js\bootstrap.js" />
+    <None Include="wwwroot\Content\js\custom.js" />
+    <None Include="wwwroot\Content\js\jquery-3.4.1.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.23" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.23" />
@@ -15,6 +50,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>

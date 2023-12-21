@@ -19,7 +19,7 @@ public class ApplicationUser : IdentityUser
     [Display(Name ="Hastanın Adı Soyadı")]
     public string FirstAndLastName { get;set; }
 
-    public List<Appointment> Appointments { get; set; } = new List<Appointment>();
+    public List<Appointments> Appointments { get; set; } = new List<Appointments>();
 
 
 

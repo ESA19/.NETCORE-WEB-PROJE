@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
+using System.ComponentModel.DataAnnotations;
 
 namespace Deneme.Data;
 
@@ -17,7 +18,7 @@ public class DenemeDbContext : IdentityDbContext<ApplicationUser>
     }
     
     public DbSet<Doctor> Doctors { get; set; }
-    public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<Appointments> Appointments { get; set; }
     public DbSet<Department> Departments { get; set; }
    
 

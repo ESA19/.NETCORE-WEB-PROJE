@@ -9,7 +9,7 @@ namespace Deneme.Models
         public string DepartmentName { get; set; }
 
         public List<Doctor> Doctors { get; set; } = new List<Doctor>();
-        public List<Appointment> Appointments { get; set; }= new List<Appointment>();
+        public List<Appointments> Appointments { get; set; }= new List<Appointments>();
     }
 
 }

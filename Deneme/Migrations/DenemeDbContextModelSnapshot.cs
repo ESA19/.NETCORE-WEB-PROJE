@@ -120,7 +120,7 @@ namespace Deneme.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("Appointments", (string)null);
                 });
 
             modelBuilder.Entity("Deneme.Models.Department", b =>
@@ -137,7 +137,7 @@ namespace Deneme.Migrations
 
                     b.HasKey("DepartmentId");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("Deneme.Models.Doctor", b =>
@@ -159,7 +159,7 @@ namespace Deneme.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

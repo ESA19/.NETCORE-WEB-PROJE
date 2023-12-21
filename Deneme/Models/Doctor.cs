@@ -5,17 +5,18 @@ namespace Deneme.Models
 {
     public class Doctor
     {
+        [Required]
         public int DoctorId { get; set; }
+
+        [Required]
         [Display(Name ="Doktorun Adı")]
         public string DoctorName { get; set; }
 
-        
-        
-        public int DepartmentId { get; set; }
-        
+        [Required]
         [Display(Name = "Doktorun Bölümü")]
+        public int DepartmentId { get; set; }
         public Department Department { get; set; }
 
-        public List<Appointment> Appointments { get; set; } = new List<Appointment>();
+        public List<Appointments> Appointments { get; set; } = new List<Appointments>();
     }
 }
