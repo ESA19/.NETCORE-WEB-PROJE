@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+<!DOCTYPE html>
 <html lang="en">
 <head>
     @RenderSection("Scripts", required: false)
@@ -52,16 +53,16 @@
 
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="/Home/Index">Anasayfa </a>
+                                <a class="nav-link" href="/Home/Index">@localizer["Anasayfa"] </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Home/Index/#about"> Hakkımızda</a>
+                                <a class="nav-link" href="/Home/Index/#about"> @localizer["Hakkımızda"]</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Home/Index/#departments">Departmanlar</a>
+                                <a class="nav-link" href="/Home/Index/#departments">@localizer["Departmanlar"]</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Home/Index/#doctors">Doktorlar</a>
+                                <a class="nav-link" href="/Home/Index/#doctors">@localizer["Doktorlar"]</a>
                             </li>
                             @if (User.Identity.IsAuthenticated)
                             {
@@ -69,20 +70,20 @@
                                 {
 
                                     <li class="nav-item">
-                                        <a class="nav-link" asp-area="" asp-controller="Department" asp-action="Create">Departman Ekle </a>
+                                        <a class="nav-link" asp-area="" asp-controller="Department" asp-action="Create">@localizer["Departman Ekle"] </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" asp-area="" asp-controller="Doctor" asp-action="Create">Doktor Ekle</a>
+                                        <a class="nav-link" asp-area="" asp-controller="Doctor" asp-action="Create">@localizer["Doktor Ekle"]</a>
                                     </li>
                                 }
                                 else
                                 {
 
                                     <li class="nav-item">
-                                        <a class="nav-link" asp-area="" asp-controller="Appointment" asp-action="Create">Randevu Al</a>
+                                        <a class="nav-link" asp-area="" asp-controller="Appointment" asp-action="@localizer["Randevu Al"]"></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" asp-area="" asp-controller="Appointment" asp-action="Index">Randevularım</a>
+                                        <a class="nav-link" asp-area="" asp-controller="Appointment" asp-action="Index">@localizer["Randevularım"]</a>
                                     </li>
                                 }
                             }
@@ -111,7 +112,7 @@
                 <div class="col-md-2 col-lg-2 footer_col">
                     <div class="footer_contact">
                         <h4>
-                            İletişim
+                            @localizer["İletişim"]
                         </h4>
                         <div class="contact_link_box">
                             <a href="">
@@ -153,20 +154,20 @@
                 <div class="col-md-2 col-lg-2 mx-auto footer_col">
                     <div class="footer_link_box">
                         <h4>
-                            Linkler
+                            @localizer["Linkler"]
                         </h4>
                         <div class="footer_links">
                             <a class="active" href="/Home/Index">
-                                Anasayfa
+                                @localizer["Anasayfa"]
                             </a>
                             <a class="" href="/Home/Index/#about">
-                                Hakkımızda
+                                @localizer["Hakkımızda"]
                             </a>
                             <a class="" href="/Home/Index/#departments">
-                                Departmanlar
+                                @localizer["Departmanlar"]
                             </a>
                             <a class="" href="/Home/Index/#doctors">
-                                Doktorlar
+                                @localizer["Doktorlar"]
                             </a>
                         </div>
                     </div>
@@ -174,7 +175,7 @@
             </div>
             <div class="footer-info">
                 <p>
-                    &copy; <span id="displayYear"></span> Her Hakkı Saklıdır
+                    &copy; <span id="displayYear"></span> @localizer["Her Hakkı Saklıdır"]
                     &copy; ESA HOSPITAL
                     
                 </p>

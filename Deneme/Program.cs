@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Deneme.Data;
 using Deneme.Areas.Identity.Data;
+using FluentAssertions.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DenemeDbContextConnection") ?? throw new InvalidOperationException("Connection string 'DenemeDbContextConnection' not found.");
+
 
 builder.Services.AddDbContext<DenemeDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -22,7 +24,12 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();   
+builder.Services.AddRazorPages();
+builder.Services.AddLocalization(opt =>
+{
+    opt.ResourcesPath = "Resource";
+});
+builder.Services.AddMvc().AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
 var app = builder.Build();
 
@@ -41,6 +48,9 @@ app.UseRouting();
 app.UseAuthentication();;
 
 app.UseAuthorization();
+var supportedCultures = new[] { "en", "tr"};
+var localizationOptions=new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[1]).AddSupportedUICultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+app.UseRequestLocalization(localizationOptions);
 
 app.MapControllerRoute(
     name: "default",

@@ -1,4 +1,5 @@
 ﻿using Deneme.Models;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -17,7 +18,7 @@ namespace Deneme.Controllers
         {
             return View();
         }
-
+       
         public IActionResult Privacy()
         {
             return View();
