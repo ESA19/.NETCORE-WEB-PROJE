@@ -1,6 +1,7 @@
 ﻿using Deneme.Models;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using System.Diagnostics;
 
 namespace Deneme.Controllers
@@ -8,10 +9,23 @@ namespace Deneme.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IHtmlLocalizer<HomeController> _localizer;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,IHtmlLocalizer<HomeController> localizer)
         {
             _logger = logger;
+            _localizer = localizer;
+        }
+        [HttpPost]
+        public IActionResult setLanguage(string culture, string returnUrl)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
+
+            return LocalRedirect(returnUrl);
         }
 
         public IActionResult Index()

@@ -1,4 +1,5 @@
 ﻿@page
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 @model RegisterModel
 @{
     ViewData["Title"] = "Kayıt Ol";
@@ -6,23 +7,18 @@
 }
 
 <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-    <h2>Yeni Bir Hesap Oluşturun</h2>
+    <h2>@localizer["Yeni Bir Hesap Oluşturun"]</h2>
     <hr />
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="row">
-        <div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.FirstAndLastName" class="form-control" aria-required="true" />
-                <label asp-for="Input.FirstAndLastName">Ad-Soyad</label>
-                <span asp-validation-for="Input.FirstAndLastName" class="text-danger"></span>
-            </div>
 
-        </div>
-
+    <div class="form-floating mb-3">
+        <input asp-for="Input.FirstAndLastName" class="form-control" aria-required="true" />
+        <label asp-for="Input.FirstAndLastName">@localizer["Ad-Soyad"]</label>
+        <span asp-validation-for="Input.FirstAndLastName" class="text-danger"></span>
     </div>
     <div class="form-floating mb-3">
         <input asp-for="Input.Phone" class="form-control" autocomplete="phone" aria-required="true" />
-        <label asp-for="Input.Phone">Telefon</label>
+        <label asp-for="Input.Phone">@localizer["Telefon"]</label>
         <span asp-validation-for="Input.Phone" class="text-danger"></span>
     </div>
     <div class="form-floating mb-3">
@@ -32,15 +28,15 @@
     </div>
     <div class="form-floating mb-3">
         <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-        <label asp-for="Input.Password">Şifre</label>
+        <label asp-for="Input.Password">@localizer["Şifre"]</label>
         <span asp-validation-for="Input.Password" class="text-danger"></span>
     </div>
     <div class="form-floating mb-3">
         <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-        <label asp-for="Input.ConfirmPassword">Şifre Tekrar</label>
+        <label asp-for="Input.ConfirmPassword">@localizer["Şifre Tekrar"]</label>
         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
     </div>
-    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Kayıt Oluştur</button>
+    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-success">@localizer["Kayıt Oluştur"]</button>
 </form>
 
 

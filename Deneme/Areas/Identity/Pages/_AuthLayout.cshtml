@@ -1,4 +1,4 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
    @{ Layout = "/Views/Shared/_Layout.cshtml";}
     <div class="row justify-content-center">
         <div class="col-5 mt-5">
@@ -7,12 +7,12 @@
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
                             <a class="nav-link" href="/Identity/Account/Login">
-                                Giriş Yap
+                                @localizer["Giriş Yap"]
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Identity/Account/Register">
-                                Kayıt Ol
+                                @localizer["Kayıt Ol"]
                             </a>
                         </li>
                     </ul>

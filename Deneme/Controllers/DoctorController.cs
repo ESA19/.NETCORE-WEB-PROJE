@@ -65,22 +65,30 @@ namespace Deneme.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DoctorId,DoctorName,DepartmentId")] Doctor doctor)
         {
+            var doctorIsAdded = _context.Doctors.Where(x => x.DoctorName == doctor.DoctorName).Count();
+           
+            if (doctorIsAdded != 0)
+            {
+                ViewBag.Mesaj = "Hata! bu doktor zaten Ekli";
 
+            }
+            else
+            {
+                if (ModelState.IsValid || true)
+                {
+                    _context.Add(doctor);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
             if (doctor.DoctorName==null)
             {
-                Console.WriteLine("Doktor Adı Boş Bırakılamaz!");
                 ViewBag.DepartmentName = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
                 return View(doctor);
             }
-            if (ModelState.IsValid||true)
-            {
-                _context.Add(doctor);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+          
             foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
             {
-                // Hata mesajını uygun bir şekilde işleyin (örneğin, loglama veya kullanıcıya gösterme)
                 Console.WriteLine($"Hata: {error.ErrorMessage}");Console.WriteLine(error);
             }
 

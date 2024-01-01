@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Deneme.Data;
 using Deneme.Areas.Identity.Data;
 using FluentAssertions.Common;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.VisualBasic.FileIO;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DenemeDbContextConnection") ?? throw new InvalidOperationException("Connection string 'DenemeDbContextConnection' not found.");
@@ -27,9 +31,23 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddLocalization(opt =>
 {
-    opt.ResourcesPath = "Resource";
+    opt.ResourcesPath = "Resources";
 });
 builder.Services.AddMvc().AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var cultures = new List<CultureInfo>
+    {
+        new CultureInfo("en"),
+        new CultureInfo("tr"),
+
+    };
+    options.DefaultRequestCulture = new RequestCulture("tr");
+    options.SupportedCultures = cultures;
+    options.SupportedUICultures = cultures;
+
+
+});
 
 var app = builder.Build();
 
@@ -48,9 +66,10 @@ app.UseRouting();
 app.UseAuthentication();;
 
 app.UseAuthorization();
-var supportedCultures = new[] { "en", "tr"};
-var localizationOptions=new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[1]).AddSupportedUICultures(supportedCultures).AddSupportedUICultures(supportedCultures);
-app.UseRequestLocalization(localizationOptions);
+//var supportedCultures = new[] { "en", "tr"};
+//var localizationOptions=new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[1]).AddSupportedUICultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+app.UseRequestLocalization(app.Services.CreateScope().ServiceProvider.
+    GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
 app.MapControllerRoute(
     name: "default",

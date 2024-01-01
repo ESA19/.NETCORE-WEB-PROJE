@@ -45,9 +45,7 @@
                 @Html.DisplayFor(modelItem => item.AppointmentDate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.AppointmentId">Düzenle</a> |
-                <a asp-action="Details" asp-route-id="@item.AppointmentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AppointmentId">Sil</a>
+                 <a asp-action="Delete" asp-route-id="@item.AppointmentId" class="btn btn-danger">Sil</a>
             </td>
         </tr>
 }

@@ -65,12 +65,22 @@ namespace Deneme.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DepartmentId,DepartmentName")] Department department)
         {
-            if (ModelState.IsValid)
+            var departmentIsAdded = _context.Departments.Where(x => x.DepartmentName == department.DepartmentName).Count();
+            if (departmentIsAdded!=0)
             {
-                _context.Add(department);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.Mesaj = "Hata! bu departman zaten Ekli";
+
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Add(department);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            
             return View(department);
         }
 
@@ -153,6 +163,13 @@ namespace Deneme.Controllers
                 return Problem("Entity set 'DenemeDbContext.Departments'  is null.");
             }
             var department = await _context.Departments.FindAsync(id);
+
+            //if (department.Appointments != null)
+            //{
+            //    ViewBag.Mesaj = "Hata Departmana Ait Randevular var!";
+
+
+            //}
             if (department != null)
             {
                 _context.Departments.Remove(department);

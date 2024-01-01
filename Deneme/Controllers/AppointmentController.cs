@@ -105,12 +105,7 @@ namespace Deneme.Controllers
                 hataVar = true;
             }
 
-            //if (!ModelState.IsValid)
-            //{
-            //    ViewBag.Mesaj = "ters gitti";
-            //    hataVar = true;
-            //}
-            if (appointment.AppointmentDate.Date < DateTime.Today)
+            if (appointment.AppointmentDate.Date < DateTime.UtcNow)
             {
                 ViewBag.Mesaj = "Geçmiş Zamana Randevu alınmaz!";
                 hataVar = true;
